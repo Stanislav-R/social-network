@@ -17,3 +17,11 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class UserActivitySerializer(serializers.ModelSerializer):
+    user_id = serializers.CharField(source="id")
+
+    class Meta:
+        model = User
+        fields = ("user_id", "username", "last_login", "updated_at")

@@ -1,11 +1,13 @@
 import datetime
 import jwt
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.generics import ListAPIView
+from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserActivitySerializer
 
 
 class RegisterView(APIView):
@@ -74,3 +76,10 @@ class LogoutView(APIView):
             'message': 'User logged out successfully'
         }
         return response
+
+
+class UserActivity(ListAPIView):
+
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = User.objects.all()
+    serializer_class = UserActivitySerializer
