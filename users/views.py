@@ -2,7 +2,6 @@ import datetime
 import jwt
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import ListAPIView
-from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -69,6 +68,7 @@ class UserView(APIView):
 
 
 class LogoutView(APIView):
+
     def post(self, request):
         response = Response()
         response.delete_cookie('jwt')
@@ -79,7 +79,5 @@ class LogoutView(APIView):
 
 
 class UserActivity(ListAPIView):
-
-    permission_classes = [permissions.IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserActivitySerializer
