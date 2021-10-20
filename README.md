@@ -25,5 +25,5 @@ For deployment to your PC use next steps:
      - /posts_list (CRUD)
      - /likes_list (CRUD)
 3. Analytics:
-   - /users/activity (Last login & last request)
-   - /posts/analytics (Count of likes)
+   - /api/users/activity (Last login & last request)
+   - /api/posts/analytics/?date_from=2021-01-01&date_to=2021-12-31 (Count of likes)
